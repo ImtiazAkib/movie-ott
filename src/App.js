@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     let isCancelled = false;
-    fetch(`http://www.omdbapi.com/?s=${searchValue}&apikey=71f5da`)
+    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=71f5da`)
       .then((req) => req.json())
       .then((res) => {
         if (!isCancelled) {
@@ -85,7 +85,11 @@ function App() {
 
   const handleFavouriteMovies = () => {
     let movies = localStorage.getItem("FavouriteMovies");
-    setFavourites(JSON.parse(movies));
+    let cart = [];
+    if (movies) {
+      setFavourites(JSON.parse(movies));
+    }
+    return cart;
   };
 
   const handleLocalStorage = (items) => {
